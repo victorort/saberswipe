@@ -127,6 +127,389 @@ const facts = [
   }
 ];
 
+const moreFacts = [
+  {
+    id: "ciencia-2",
+    category: "Ciencia",
+    title: "Una hipotesis no es una corazonada cualquiera",
+    body: "En ciencia, una hipotesis propone una explicacion que puede ponerse a prueba. Si no hay forma de comprobarla o refutarla, queda fuera del terreno cientifico.",
+    extra: "La clave no es sonar inteligente, sino poder medir algo."
+  },
+  {
+    id: "ciencia-3",
+    category: "Ciencia",
+    title: "La correlacion no demuestra causa",
+    body: "Dos cosas pueden ocurrir a la vez sin que una cause la otra. Puede existir una tercera variable oculta o una coincidencia estadistica.",
+    extra: "Pregunta util: que mecanismo conectaria realmente esos datos?"
+  },
+  {
+    id: "ciencia-4",
+    category: "Ciencia",
+    title: "El error tambien informa",
+    body: "Un experimento que no sale como se esperaba puede ser valioso si muestra que una explicacion era incompleta o que habia una variable no controlada.",
+    extra: "Fracasar con metodo puede ahorrar anos de confusion."
+  },
+  {
+    id: "cultura-2",
+    category: "Cultura general",
+    title: "La imprenta no solo hizo libros",
+    body: "Tambien facilito panfletos, periodicos, mapas, biblias, manuales y propaganda. Al multiplicar copias, multiplico discusiones.",
+    extra: "Cuando baja el coste de copiar ideas, cambia la sociedad."
+  },
+  {
+    id: "cultura-3",
+    category: "Cultura general",
+    title: "El calendario gregoriano corrigio un desfase",
+    body: "Ajusto errores acumulados del calendario juliano para acercar mejor el ano civil al ano solar. No todos los paises lo adoptaron al mismo tiempo.",
+    extra: "Medir el tiempo tambien es una decision cultural."
+  },
+  {
+    id: "cultura-4",
+    category: "Cultura general",
+    title: "Una lengua no es solo vocabulario",
+    body: "Cada idioma arrastra formas de ordenar ideas, humor, gestos, historia y expresiones que no siempre se traducen de manera exacta.",
+    extra: "Traducir bien es entender cultura, no solo palabras."
+  },
+  {
+    id: "curioso-2",
+    category: "Datos curiosos",
+    title: "Los platanos son bayas botanicas",
+    body: "En botanica, una baya se define por como se forma el fruto. Por esa definicion, el platano cuenta como baya, aunque en cocina no lo parezca.",
+    extra: "La clasificacion cientifica y el lenguaje diario no siempre coinciden."
+  },
+  {
+    id: "curioso-3",
+    category: "Datos curiosos",
+    title: "El olor de la lluvia tiene nombre",
+    body: "Ese aroma caracteristico tras llover se llama petricor. Aparece por compuestos liberados desde el suelo y por aceites de algunas plantas.",
+    extra: "Una palabra preciosa para una sensacion muy comun."
+  },
+  {
+    id: "curioso-4",
+    category: "Datos curiosos",
+    title: "El vidrio puede ser muy resistente",
+    body: "El vidrio comun se rompe por pequenas grietas y tensiones. Controlando su fabricacion, puede volverse fuerte, flexible o muy util en tecnologia.",
+    extra: "Fragil no significa inutil: depende del material y del uso."
+  },
+  {
+    id: "geo-2",
+    category: "Geografia",
+    title: "El Nilo fluye hacia el norte",
+    body: "Aunque solemos imaginar los rios bajando hacia abajo en el mapa, lo importante es la pendiente. El Nilo avanza hacia el Mediterraneo.",
+    extra: "La orientacion del mapa puede enganar la intuicion."
+  },
+  {
+    id: "geo-3",
+    category: "Geografia",
+    title: "Los Andes son una cordillera enorme",
+    body: "Recorren gran parte del borde occidental de Sudamerica y atraviesan varios paises. Influyen en clima, ciudades, agricultura y transporte.",
+    extra: "La geografia fisica condiciona la historia humana."
+  },
+  {
+    id: "geo-4",
+    category: "Geografia",
+    title: "Un pais puede tener varias capitales",
+    body: "Algunos estados reparten funciones entre ciudades. Sudafrica, por ejemplo, tiene sedes distintas para funciones administrativas, legislativas y judiciales.",
+    extra: "La capitalidad puede ser politica, historica o funcional."
+  },
+  {
+    id: "capitales-2",
+    category: "Capitales",
+    title: "La capital de Marruecos es Rabat",
+    body: "Casablanca es la ciudad mas grande y muy conocida por su actividad economica, pero la capital politica de Marruecos es Rabat.",
+    extra: "Ciudad famosa y capital no siempre son la misma cosa."
+  },
+  {
+    id: "capitales-3",
+    category: "Capitales",
+    title: "La capital de Suiza es Berna",
+    body: "Zurich y Ginebra son muy conocidas internacionalmente, pero Berna cumple la funcion de capital federal de Suiza.",
+    extra: "Suiza es buen ejemplo de pais muy descentralizado."
+  },
+  {
+    id: "capitales-4",
+    category: "Capitales",
+    title: "La capital de Brasil es Brasilia",
+    body: "Brasilia fue construida en el siglo XX para llevar la capital al interior del pais y equilibrar el desarrollo lejos de la costa.",
+    extra: "Rio de Janeiro fue capital antes, pero ya no lo es."
+  },
+  {
+    id: "politica-2",
+    category: "Politica",
+    title: "Estado y gobierno no son lo mismo",
+    body: "El Estado incluye instituciones permanentes, territorio, poblacion y leyes. El gobierno es el equipo que dirige temporalmente parte de ese Estado.",
+    extra: "Confundirlos puede nublar debates politicos."
+  },
+  {
+    id: "politica-3",
+    category: "Politica",
+    title: "Ganar no lo legitima todo",
+    body: "En democracia, ganar elecciones importa, pero tambien respetar reglas, derechos, controles y libertades. La legitimidad se sostiene con practicas continuas.",
+    extra: "Las instituciones se prueban sobre todo cuando hay conflicto."
+  },
+  {
+    id: "politica-4",
+    category: "Politica",
+    title: "Un sistema federal reparte poder",
+    body: "En un sistema federal, regiones o estados tienen competencias propias protegidas por la constitucion. No todo depende del gobierno central.",
+    extra: "Estados Unidos, Alemania y Mexico son ejemplos federales."
+  },
+  {
+    id: "historia-2",
+    category: "Historia",
+    title: "La Edad Media no fue igual en todas partes",
+    body: "Duro muchos siglos y tuvo comercio, universidades, arte, guerras, agricultura, ciudades y cambios regionales enormes.",
+    extra: "Las etiquetas historicas simplifican periodos complejos."
+  },
+  {
+    id: "historia-3",
+    category: "Historia",
+    title: "La Ruta de la Seda fue una red",
+    body: "No fue un unico camino. Conecto Asia, Oriente Medio, Africa y Europa para mover bienes, ideas, religiones y tecnologias.",
+    extra: "La seda era famosa, pero no era lo unico que viajaba."
+  },
+  {
+    id: "historia-4",
+    category: "Historia",
+    title: "La Revolucion Industrial cambio la vida diaria",
+    body: "Carbon, maquinas, fabricas, transporte y nuevas formas de trabajo transformaron produccion, ciudades, horarios y relaciones sociales.",
+    extra: "No fue solo tecnologia: tambien fue cambio social."
+  },
+  {
+    id: "religion-2",
+    category: "Religion",
+    title: "El budismo no se centra en un dios creador",
+    body: "Muchas tradiciones budistas ponen el foco en el sufrimiento, el deseo, la conciencia, la practica y el camino hacia la liberacion.",
+    extra: "No encaja del todo en categorias occidentales simples."
+  },
+  {
+    id: "religion-3",
+    category: "Religion",
+    title: "El calendario religioso ordena comunidades",
+    body: "Fiestas, ayunos, peregrinaciones y ritos marcan ritmos sociales. Muchas sociedades han medido el tiempo con referencias religiosas.",
+    extra: "Calendario y creencias suelen ir de la mano."
+  },
+  {
+    id: "religion-4",
+    category: "Religion",
+    title: "Los simbolos religiosos tienen capas",
+    body: "Un mismo simbolo puede representar identidad, memoria, poder, esperanza, duelo o pertenencia. Su significado depende mucho del contexto.",
+    extra: "Interpretar simbolos exige mirar historia y comunidad."
+  },
+  {
+    id: "fisica-2",
+    category: "Fisica",
+    title: "La inercia explica por que cuesta cambiar movimiento",
+    body: "Un objeto tiende a mantener su estado de reposo o movimiento si no actua una fuerza neta. Por eso notas un empujon cuando un coche frena.",
+    extra: "Newton convirtio intuiciones diarias en leyes matematicas."
+  },
+  {
+    id: "fisica-3",
+    category: "Fisica",
+    title: "La energia no desaparece",
+    body: "La energia se transforma: movimiento, calor, luz, sonido o energia quimica. En sistemas cerrados, la cantidad total se conserva.",
+    extra: "Lo dificil suele ser seguir a donde se ha ido."
+  },
+  {
+    id: "fisica-4",
+    category: "Fisica",
+    title: "La luz se comporta como onda y particula",
+    body: "Segun el experimento, la luz muestra propiedades de onda o de particula. Esta dualidad fue clave para la mecanica cuantica.",
+    extra: "La realidad microscopica no siempre respeta nuestra intuicion."
+  },
+  {
+    id: "astro-2",
+    category: "Astronomia",
+    title: "Una estrella nace en nubes de gas",
+    body: "Las estrellas se forman cuando regiones de gas y polvo colapsan por gravedad. Al aumentar presion y temperatura, puede comenzar la fusion nuclear.",
+    extra: "La gravedad es escultora a escala cosmica."
+  },
+  {
+    id: "astro-3",
+    category: "Astronomia",
+    title: "Venus gira de forma muy lenta",
+    body: "Venus tarda mas en girar sobre si mismo que en orbitar alrededor del Sol. Ademas, su rotacion va en sentido contrario al de muchos planetas.",
+    extra: "Un dia venusiano es una rareza del sistema solar."
+  },
+  {
+    id: "astro-4",
+    category: "Astronomia",
+    title: "La Luna se aleja poco a poco",
+    body: "La Luna se distancia de la Tierra unos centimetros al ano por interacciones gravitatorias y mareas. Es lento, pero medible.",
+    extra: "La relacion Tierra-Luna cambia con el tiempo."
+  },
+  {
+    id: "socio-2",
+    category: "Sociologia",
+    title: "El capital social tambien importa",
+    body: "Las redes de confianza, apoyo y contactos pueden influir en oportunidades laborales, seguridad, salud y aprendizaje.",
+    extra: "No todo recurso cabe en una cuenta bancaria."
+  },
+  {
+    id: "socio-3",
+    category: "Sociologia",
+    title: "Las instituciones moldean habitos",
+    body: "Escuelas, empresas, familias, medios y leyes ensenan maneras de comportarse. Muchas rutinas sociales se aprenden sin darnos cuenta.",
+    extra: "Lo cotidiano tambien tiene estructura."
+  },
+  {
+    id: "socio-4",
+    category: "Sociologia",
+    title: "La movilidad social mide cambios de posicion",
+    body: "Estudia si una persona o familia puede cambiar de nivel educativo, economico o profesional respecto a su origen.",
+    extra: "Es una forma de observar oportunidades reales."
+  },
+  {
+    id: "psico-2",
+    category: "Psicologia",
+    title: "La atencion es limitada",
+    body: "El cerebro no procesa todo con la misma profundidad. Selecciona informacion, ignora parte del entorno y se cansa con multitarea intensa.",
+    extra: "Concentrarse tambien es decidir que no mirar."
+  },
+  {
+    id: "psico-3",
+    category: "Psicologia",
+    title: "El sesgo de confirmacion filtra pruebas",
+    body: "Tendemos a buscar y valorar mas la informacion que confirma lo que ya creemos. Esto puede reforzar errores sin que lo notemos.",
+    extra: "Una buena costumbre: buscar el mejor argumento contrario."
+  },
+  {
+    id: "psico-4",
+    category: "Psicologia",
+    title: "Nombrar una emocion ayuda a regularla",
+    body: "Poner palabras a lo que sentimos puede reducir confusion y facilitar respuestas mas utiles. No elimina la emocion, pero la vuelve mas manejable.",
+    extra: "Decir 'estoy frustrado' ya organiza parte del caos."
+  },
+  {
+    id: "sexo-2",
+    category: "Sexologia",
+    title: "La salud sexual incluye informacion y cuidado",
+    body: "No trata solo de evitar riesgos. Incluye bienestar, respeto, comunicacion, placer responsable, prevencion, identidad y acceso a informacion fiable.",
+    extra: "Hablar con claridad suele mejorar la seguridad y la confianza."
+  },
+  {
+    id: "sexo-3",
+    category: "Sexologia",
+    title: "El deseo no funciona igual en todas las personas",
+    body: "Puede variar por edad, estres, salud, vinculo, contexto, medicacion y emociones. Compararse con una norma imaginaria suele crear presion innecesaria.",
+    extra: "La comunicacion honesta vale mas que adivinar."
+  },
+  {
+    id: "sexo-4",
+    category: "Sexologia",
+    title: "La educacion sexual tambien previene mitos",
+    body: "Aprender anatomia, consentimiento, anticoncepcion, infecciones y relaciones sanas reduce desinformacion y decisiones tomadas por miedo o presion.",
+    extra: "Informacion precisa es una forma de autocuidado."
+  },
+  {
+    id: "bio-2",
+    category: "Biologia",
+    title: "El ADN es una biblioteca con instrucciones",
+    body: "El ADN almacena informacion para construir y regular organismos. Los genes son segmentos con funciones concretas, pero el ambiente tambien influye.",
+    extra: "Biologia no es destino simple: hay interacciones."
+  },
+  {
+    id: "bio-3",
+    category: "Biologia",
+    title: "Las bacterias no son siempre enemigas",
+    body: "Muchas bacterias viven en nuestro cuerpo y ayudan a digerir, proteger la piel o competir contra microorganismos daninos.",
+    extra: "El microbioma es parte de nuestra vida biologica."
+  },
+  {
+    id: "bio-4",
+    category: "Biologia",
+    title: "La fotosintesis sostiene gran parte de la vida",
+    body: "Plantas, algas y algunas bacterias convierten luz, agua y dioxido de carbono en energia quimica, liberando oxigeno como resultado.",
+    extra: "Sin fotosintesis, la atmosfera y la comida serian muy distintas."
+  },
+  {
+    id: "info-2",
+    category: "Informatica",
+    title: "Internet no es la web",
+    body: "Internet es la red de redes que conecta dispositivos. La web es uno de sus servicios, basado en paginas y enlaces que visitas con navegador.",
+    extra: "Correo, videojuegos online y mensajeria tambien usan Internet."
+  },
+  {
+    id: "info-3",
+    category: "Informatica",
+    title: "Cifrar no es esconder por arte de magia",
+    body: "El cifrado transforma informacion usando claves matematicas. Sin la clave adecuada, leer el mensaje deberia ser impracticable.",
+    extra: "Es una base de pagos, mensajeria y seguridad web."
+  },
+  {
+    id: "info-4",
+    category: "Informatica",
+    title: "Un bug puede estar en la idea",
+    body: "A veces el programa hace exactamente lo que se le pidio, pero la regla estaba mal pensada. Por eso especificar bien importa tanto como programar.",
+    extra: "Depurar tambien es revisar supuestos."
+  },
+  {
+    id: "economia-2",
+    category: "Economia",
+    title: "El coste de oportunidad esta en cada decision",
+    body: "Elegir una opcion implica renunciar a otra. El coste de oportunidad es el valor de la mejor alternativa que dejas pasar.",
+    extra: "No solo se paga con dinero: tambien con tiempo y energia."
+  },
+  {
+    id: "economia-3",
+    category: "Economia",
+    title: "Oferta y demanda no explican todo",
+    body: "Son herramientas potentes, pero tambien importan leyes, poder de mercado, informacion, cultura, tecnologia, expectativas y desigualdad.",
+    extra: "La economia real suele tener muchas capas."
+  },
+  {
+    id: "economia-4",
+    category: "Economia",
+    title: "Productividad no es trabajar mas horas",
+    body: "La productividad mide cuanto valor se produce con recursos dados. Puede mejorar con tecnologia, organizacion, formacion o mejores procesos.",
+    extra: "Trabajar mas no siempre equivale a producir mejor."
+  },
+  {
+    id: "filosofia-2",
+    category: "Filosofia",
+    title: "La etica pregunta que deberiamos hacer",
+    body: "No solo describe conductas: examina razones, consecuencias, deberes, virtudes y formas de vivir mejor con otras personas.",
+    extra: "Una pregunta simple puede abrir un debate enorme."
+  },
+  {
+    id: "filosofia-3",
+    category: "Filosofia",
+    title: "Socrates usaba preguntas como herramienta",
+    body: "El metodo socratico explora ideas haciendo preguntas que revelan contradicciones, supuestos o definiciones poco claras.",
+    extra: "Pensar bien muchas veces empieza por preguntar mejor."
+  },
+  {
+    id: "filosofia-4",
+    category: "Filosofia",
+    title: "El problema mente-cuerpo sigue abierto",
+    body: "La filosofia de la mente pregunta como se relacionan conciencia, cerebro, experiencia subjetiva y mundo fisico.",
+    extra: "Sabemos mucho del cerebro, pero la experiencia sigue siendo dificil."
+  },
+  {
+    id: "salud-2",
+    category: "Salud",
+    title: "Caminar tambien cuenta como ejercicio",
+    body: "La actividad fisica moderada, sostenida y frecuente puede mejorar salud cardiovascular, animo, sueno y energia.",
+    extra: "Lo sostenible suele ganar a lo perfecto."
+  },
+  {
+    id: "salud-3",
+    category: "Salud",
+    title: "La hidratacion depende del contexto",
+    body: "No todo el mundo necesita la misma cantidad de agua. Influyen temperatura, actividad, dieta, edad y salud.",
+    extra: "La sed, el color de la orina y el calor dan pistas utiles."
+  },
+  {
+    id: "salud-4",
+    category: "Salud",
+    title: "El descanso mejora decisiones",
+    body: "Dormir poco afecta atencion, memoria, impulsividad y regulacion emocional. Muchas decisiones parecen mas dificiles cuando estamos agotados.",
+    extra: "A veces pensar mejor empieza por descansar."
+  }
+];
+
+facts.push(...moreFacts);
+
 const hobbies = [
   {
     name: "Dibujo con lapiz",
@@ -259,7 +642,8 @@ const categoryOrder = [
 const state = {
   category: "Todos",
   favorites: new Set(JSON.parse(localStorage.getItem("saberswipe:favorites") || "[]")),
-  hobbyType: "Todos"
+  hobbyType: "Todos",
+  feedLimit: 24
 };
 
 const feed = document.querySelector("#feed");
@@ -293,8 +677,9 @@ function renderCategories() {
 
 function renderFeed() {
   const visibleFacts = getVisibleFacts();
+  const renderedFacts = visibleFacts.slice(0, state.feedLimit);
 
-  feed.innerHTML = visibleFacts
+  feed.innerHTML = renderedFacts
     .map((fact, index) => {
       const isSaved = state.favorites.has(fact.id);
       return `
@@ -316,6 +701,24 @@ function renderFeed() {
       `;
     })
     .join("");
+}
+
+function resetFeedPosition() {
+  state.feedLimit = 24;
+  renderFeed();
+  feed.scrollTo({ top: 0, behavior: "smooth" });
+}
+
+function loadMoreFeedCards() {
+  const visibleFacts = getVisibleFacts();
+  if (state.feedLimit >= visibleFacts.length) {
+    return;
+  }
+
+  const previousHeight = feed.scrollHeight;
+  state.feedLimit += 18;
+  renderFeed();
+  feed.scrollTop += feed.scrollHeight - previousHeight;
 }
 
 function renderFavorites() {
@@ -360,8 +763,7 @@ function shuffleFacts() {
     [facts[index], facts[swapIndex]] = [facts[swapIndex], facts[index]];
   }
 
-  renderFeed();
-  feed.scrollTo({ top: 0, behavior: "smooth" });
+  resetFeedPosition();
 }
 
 categoryStrip.addEventListener("click", (event) => {
@@ -372,8 +774,7 @@ categoryStrip.addEventListener("click", (event) => {
 
   state.category = button.dataset.category;
   renderCategories();
-  renderFeed();
-  feed.scrollTo({ top: 0, behavior: "smooth" });
+  resetFeedPosition();
 });
 
 feed.addEventListener("click", (event) => {
@@ -392,6 +793,13 @@ feed.addEventListener("click", (event) => {
   saveFavorites();
   renderFeed();
   renderFavorites();
+});
+
+feed.addEventListener("scroll", () => {
+  const distanceToBottom = feed.scrollHeight - feed.scrollTop - feed.clientHeight;
+  if (distanceToBottom < feed.clientHeight * 1.5) {
+    loadMoreFeedCards();
+  }
 });
 
 document.querySelectorAll(".tab").forEach((tab) => {

@@ -145,7 +145,10 @@ main {
 .feed {
   height: 100%;
   overflow-y: auto;
+  overscroll-behavior-y: contain;
   scroll-snap-type: y mandatory;
+  touch-action: pan-y;
+  -webkit-overflow-scrolling: touch;
   scrollbar-width: none;
 }
 
@@ -156,6 +159,7 @@ main {
 .fact-card {
   min-height: 100%;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
   display: grid;
   align-items: center;
   padding: 1rem;
