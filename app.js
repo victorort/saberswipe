@@ -748,7 +748,10 @@ const state = {
   category: "Todos",
   favorites: new Set(JSON.parse(localStorage.getItem("saberswipe:favorites") || "[]")),
   hobbyType: "Todos",
-  feedLimit: 24
+  feedLimit: 24,
+  touchStartX: 0,
+  touchStartY: 0,
+  touchStartIndex: 0
 };
 
 const feed = document.querySelector("#feed");
@@ -788,7 +791,7 @@ function renderFeed() {
     .map((fact, index) => {
       const isSaved = state.favorites.has(fact.id);
       return `
-        <article class="fact-card" data-id="${fact.id}">
+        <article class="fact-card" data-id="${fact.id}" data-index="${index}">
           <div class="fact-inner">
             <div class="fact-meta">
               <span class="badge">${fact.category}</span>
@@ -820,10 +823,30 @@ function loadMoreFeedCards() {
     return;
   }
 
-  const previousHeight = feed.scrollHeight;
   state.feedLimit += 18;
   renderFeed();
-  feed.scrollTop += feed.scrollHeight - previousHeight;
+}
+
+function getCurrentCardIndex() {
+  if (!feed.clientHeight) {
+    return 0;
+  }
+
+  return Math.round(feed.scrollTop / feed.clientHeight);
+}
+
+function snapToFeedCard(index) {
+  const visibleFacts = getVisibleFacts();
+  const targetIndex = Math.max(0, Math.min(index, visibleFacts.length - 1));
+
+  if (targetIndex >= state.feedLimit - 4) {
+    loadMoreFeedCards();
+  }
+
+  feed.scrollTo({
+    top: targetIndex * feed.clientHeight,
+    behavior: "smooth"
+  });
 }
 
 function renderFavorites() {
@@ -896,7 +919,9 @@ feed.addEventListener("click", (event) => {
   }
 
   saveFavorites();
-  renderFeed();
+  button.classList.toggle("saved", state.favorites.has(id));
+  button.textContent = state.favorites.has(id) ? "ok" : "+";
+  button.setAttribute("aria-label", state.favorites.has(id) ? "Quitar de favoritos" : "Guardar en favoritos");
   renderFavorites();
 });
 
@@ -906,6 +931,27 @@ feed.addEventListener("scroll", () => {
     loadMoreFeedCards();
   }
 });
+
+feed.addEventListener("touchstart", (event) => {
+  const touch = event.touches[0];
+  state.touchStartX = touch.clientX;
+  state.touchStartY = touch.clientY;
+  state.touchStartIndex = getCurrentCardIndex();
+}, { passive: true });
+
+feed.addEventListener("touchend", (event) => {
+  const touch = event.changedTouches[0];
+  const deltaX = touch.clientX - state.touchStartX;
+  const deltaY = touch.clientY - state.touchStartY;
+  const isVerticalSwipe = Math.abs(deltaY) > 42 && Math.abs(deltaY) > Math.abs(deltaX) * 1.2;
+
+  if (!isVerticalSwipe) {
+    snapToFeedCard(getCurrentCardIndex());
+    return;
+  }
+
+  snapToFeedCard(state.touchStartIndex + (deltaY < 0 ? 1 : -1));
+}, { passive: true });
 
 document.querySelectorAll(".tab").forEach((tab) => {
   tab.addEventListener("click", () => {

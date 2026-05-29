@@ -1,4 +1,4 @@
-const CACHE_NAME = "saberswipe-v4";
+const CACHE_NAME = "saberswipe-v5";
 const APP_ASSETS = [
   "./",
   "./index.html",
