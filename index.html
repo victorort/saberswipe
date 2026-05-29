@@ -1,0 +1,75 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <meta name="theme-color" content="#101820">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+    <meta name="apple-mobile-web-app-title" content="SaberSwipe">
+    <title>SaberSwipe</title>
+    <link rel="manifest" href="manifest.webmanifest">
+    <link rel="apple-touch-icon" href="icon.svg">
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="topbar">
+        <div>
+          <p class="eyebrow">SaberSwipe</p>
+          <h1>Aprende haciendo scroll</h1>
+        </div>
+        <button class="icon-button" id="shuffleButton" type="button" aria-label="Mezclar tarjetas" title="Mezclar">
+          <span aria-hidden="true">mix</span>
+        </button>
+      </header>
+
+      <main>
+        <section class="view active" id="learnView" aria-label="Feed de aprendizaje">
+          <div class="category-strip" id="categoryStrip" aria-label="Categorias"></div>
+          <div class="feed" id="feed" aria-live="polite"></div>
+        </section>
+
+        <section class="view" id="favoritesView" aria-label="Favoritos">
+          <div class="empty-state" id="favoritesEmpty">
+            <h2>Aun no tienes favoritos</h2>
+            <p>Guarda datos que quieras repasar tocando el boton de guardar.</p>
+          </div>
+          <div class="saved-list" id="favoritesList"></div>
+        </section>
+
+        <section class="view" id="hobbiesView" aria-label="Hobbies faciles">
+          <div class="hobby-toolbar">
+            <h2>Hobbies para empezar desde casa</h2>
+            <select id="hobbyFilter" aria-label="Filtrar hobbies por tipo">
+              <option value="Todos">Todos</option>
+              <option value="Creativo">Creativo</option>
+              <option value="Manual">Manual</option>
+              <option value="Cuerpo">Cuerpo</option>
+              <option value="Mente">Mente</option>
+              <option value="Tecnologia">Tecnologia</option>
+            </select>
+          </div>
+          <div class="hobby-list" id="hobbyList"></div>
+        </section>
+      </main>
+
+      <nav class="tabbar" aria-label="Navegacion principal">
+        <button class="tab active" type="button" data-target="learnView">
+          <span aria-hidden="true">01</span>
+          Aprender
+        </button>
+        <button class="tab" type="button" data-target="favoritesView">
+          <span aria-hidden="true">02</span>
+          Favoritos
+        </button>
+        <button class="tab" type="button" data-target="hobbiesView">
+          <span aria-hidden="true">03</span>
+          Hobbies
+        </button>
+      </nav>
+    </div>
+
+    <script src="app.js"></script>
+  </body>
+</html>
