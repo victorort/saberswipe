@@ -1,42 +1,22 @@
-# Plan para tener muchas tarjetas
+# Plan para renovar tarjetas
 
-La app ya puede manejar muchas tarjetas porque el feed carga contenido por tandas. Para llegar a 100+ tarjetas por tema, lo mejor es trabajar por lotes.
+La app usa un archivo de pack activo: `content-pack.js`. Cuando queramos renovar contenido, sustituimos ese archivo por un pack nuevo y cambiamos la version de cache en `sw.js`.
 
 ## Objetivo recomendado
 
-- 18 temas iniciales.
-- 100 tarjetas por tema.
-- Total: 1.800 tarjetas.
-- Tamano ideal por tarjeta: titulo corto, explicacion de 2-3 frases y una idea extra.
+- 18 temas.
+- 50 tarjetas por tema.
+- Total activo: 900 tarjetas.
+- Cada renovacion borra el pack anterior del feed e inserta el nuevo.
 
-## Formato de cada tarjeta
+## Flujo de renovacion
 
-```js
-{
-  id: "ciencia-101",
-  category: "Ciencia",
-  title: "Titulo claro",
-  body: "Explicacion breve, correcta y facil de leer.",
-  extra: "Idea para recordar."
-}
-```
+1. Generar un nuevo `content-pack.js`.
+2. Cambiar `ACTIVE_PACK_ID` dentro de `content-pack.js`.
+3. Subir `content-pack.js` a GitHub.
+4. Subir `sw.js` con una nueva version de cache.
+5. Abrir la app en Safari y recargar.
 
-## Flujo practico
+## Criterio de calidad
 
-1. Elegir un tema, por ejemplo `Ciencia`.
-2. Crear 25 tarjetas.
-3. Revisarlas para evitar errores o repeticiones.
-4. Subirlas a GitHub y probar en iPhone.
-5. Repetir hasta llegar a 100 por tema.
-
-## Prioridad de calidad
-
-Para que SaberSwipe sea util de verdad, conviene que cada tarjeta sea:
-
-- Corta.
-- Correcta.
-- Comprensible sin contexto previo.
-- No repetida.
-- Con una idea memorable.
-
-Es mejor cargar 25 buenas tarjetas por tanda que meter 1.000 de golpe sin revisar.
+Las tarjetas deben ser breves, correctas, con matiz y menos obvias que datos escolares basicos. Mejor 900 tarjetas buenas que miles de frases de relleno.

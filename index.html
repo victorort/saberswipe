@@ -25,9 +25,14 @@
       </header>
 
       <main>
-        <section class="view active" id="learnView" aria-label="Feed de aprendizaje">
+        <section class="view active" id="learnView" aria-label="Tarjetas de aprendizaje">
           <div class="category-strip" id="categoryStrip" aria-label="Categorias"></div>
-          <div class="feed" id="feed" aria-live="polite"></div>
+          <div class="deck" id="deck" aria-live="polite"></div>
+          <div class="deck-controls" aria-label="Controles de tarjetas">
+            <button class="nav-button" id="prevButton" type="button">Anterior</button>
+            <div class="progress-pill" id="progressLabel">1 / 1</div>
+            <button class="nav-button primary" id="nextButton" type="button">Siguiente</button>
+          </div>
         </section>
 
         <section class="view" id="favoritesView" aria-label="Favoritos">
@@ -70,6 +75,7 @@
       </nav>
     </div>
 
+    <script src="content-pack.js"></script>
     <script src="app.js"></script>
   </body>
 </html>
