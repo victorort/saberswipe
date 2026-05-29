@@ -145,6 +145,24 @@ function clampCurrentIndex() {
   state.currentIndex = Math.max(0, Math.min(state.currentIndex, visibleFacts.length - 1));
 }
 
+function escapeHtml(value) {
+  return String(value)
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function renderParagraphs(value, className = "") {
+  return String(value)
+    .split(/\n+/)
+    .map((paragraph) => paragraph.trim())
+    .filter(Boolean)
+    .map((paragraph) => `<p${className ? ` class="${className}"` : ""}>${escapeHtml(paragraph)}</p>`)
+    .join("");
+}
+
 function renderCategories() {
   categoryStrip.innerHTML = categoryOrder
     .map((category) => {
@@ -164,15 +182,17 @@ function renderDeck() {
     <article class="fact-card" data-id="${fact.id}">
       <div class="fact-inner">
         <div class="fact-meta">
-          <span class="badge">${fact.category}</span>
+          <span class="badge">${escapeHtml(fact.category)}</span>
           <button class="save-button${isSaved ? " saved" : ""}" type="button" data-save="${fact.id}" aria-label="${isSaved ? "Quitar de favoritos" : "Guardar en favoritos"}">${isSaved ? "ok" : "+"}</button>
         </div>
-        <h2>${fact.title}</h2>
-        <p>${fact.body}</p>
-        <p class="fact-extra">${fact.extra}</p>
+        <h2>${escapeHtml(fact.title)}</h2>
+        <div class="fact-copy">
+          ${renderParagraphs(fact.body)}
+        </div>
+        ${renderParagraphs(fact.extra, "fact-extra")}
         <div class="tag-row">
-          <span class="mini-tag">${fact.angle}</span>
-          <span class="mini-tag">Pack ${contentPack.label}</span>
+          <span class="mini-tag">${escapeHtml(fact.angle)}</span>
+          <span class="mini-tag">Pack ${escapeHtml(contentPack.label)}</span>
         </div>
       </div>
     </article>
@@ -209,9 +229,9 @@ function renderFavorites() {
   favoritesList.innerHTML = savedFacts
     .map((fact) => `
       <article class="saved-card">
-        <span class="badge">${fact.category}</span>
-        <h3>${fact.title}</h3>
-        <p>${fact.body}</p>
+        <span class="badge">${escapeHtml(fact.category)}</span>
+        <h3>${escapeHtml(fact.title)}</h3>
+        ${renderParagraphs(fact.body)}
       </article>
     `)
     .join("");

@@ -7,6 +7,8 @@ La app usa un archivo de pack activo: `content-pack.js`. Cuando queramos renovar
 - 18 temas.
 - 50 tarjetas por tema.
 - Total activo: 900 tarjetas.
+- Cada tarjeta debe funcionar sola: titulo, explicacion, matiz, ejemplo y cierre.
+- Longitud objetivo: unas 6-8 lineas en movil.
 - Cada renovacion borra el pack anterior del feed e inserta el nuevo.
 
 ## Flujo de renovacion
@@ -19,4 +21,4 @@ La app usa un archivo de pack activo: `content-pack.js`. Cuando queramos renovar
 
 ## Criterio de calidad
 
-Las tarjetas deben ser breves, correctas, con matiz y menos obvias que datos escolares basicos. Mejor 900 tarjetas buenas que miles de frases de relleno.
+Las tarjetas deben ser correctas, con matiz y menos obvias que datos escolares basicos. Mejor una mini explicacion clara que una frase suelta. Cada tarjeta tiene que poder leerse de forma independiente, aunque pertenezca a una serie de renovacion.

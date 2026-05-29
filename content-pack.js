@@ -224,36 +224,79 @@ const THEME_SEEDS = {
   ]
 };
 
-const ANGLES = [
+function lowerFirst(value) {
+  return value.charAt(0).toLowerCase() + value.slice(1);
+}
+
+function longCard(seed, lead, second, third, fourth) {
+  return [
+    lead(seed),
+    second(seed),
+    third(seed),
+    fourth(seed)
+  ].join("\n\n");
+}
+
+const CARDS_PER_SEED = [
   {
-    label: "Concepto",
+    label: "Dato",
     title: (seed) => seed.topic,
-    body: (seed) => seed.core,
-    extra: (seed) => seed.memory
+    body: (seed) => longCard(
+      seed,
+      (item) => item.core,
+      (item) => `Lo interesante no es solo el dato, sino su consecuencia: ${lowerFirst(item.why)}`,
+      (item) => `Matiz importante: ${lowerFirst(item.trap)}`,
+      (item) => `Ejemplo concreto: ${lowerFirst(item.example)}`
+    ),
+    extra: (seed) => `Idea para recordar: ${seed.memory}`
   },
   {
-    label: "Impacto",
-    title: (seed) => seed.topic,
-    body: (seed) => seed.why,
-    extra: () => "La gracia esta en conectar el dato con sus consecuencias."
+    label: "Contexto",
+    title: (seed) => `El contexto de ${lowerFirst(seed.topic)}`,
+    body: (seed) => longCard(
+      seed,
+      (item) => item.why,
+      (item) => `La base del asunto es esta: ${lowerFirst(item.core)}`,
+      (item) => `Si se explica demasiado rapido, se pierde este matiz: ${lowerFirst(item.trap)}`,
+      (item) => `Un caso que lo aterriza: ${lowerFirst(item.example)}`
+    ),
+    extra: (seed) => `Resumen mental: ${seed.memory}`
   },
   {
     label: "Matiz",
-    title: (seed) => seed.topic,
-    body: (seed) => seed.trap,
-    extra: () => "Los buenos datos suelen tener condiciones, limites y contexto."
+    title: (seed) => `El error comun sobre ${lowerFirst(seed.topic)}`,
+    body: (seed) => longCard(
+      seed,
+      (item) => item.trap,
+      (item) => `La version mas completa es esta: ${lowerFirst(item.core)}`,
+      (item) => `Importa porque ${lowerFirst(item.why)}`,
+      (item) => `Se ve bien en este ejemplo: ${lowerFirst(item.example)}`
+    ),
+    extra: (seed) => `No lo memorices como eslogan: ${seed.memory}`
   },
   {
-    label: "Ejemplo",
-    title: (seed) => seed.topic,
-    body: (seed) => seed.example,
-    extra: () => "Un ejemplo concreto hace que la idea deje de flotar."
+    label: "Caso",
+    title: (seed) => `Un ejemplo para entender ${lowerFirst(seed.topic)}`,
+    body: (seed) => longCard(
+      seed,
+      (item) => item.example,
+      (item) => `Ese caso funciona porque ${lowerFirst(item.core)}`,
+      (item) => `La importancia general es esta: ${lowerFirst(item.why)}`,
+      (item) => `El limite que conviene no olvidar: ${lowerFirst(item.trap)}`
+    ),
+    extra: (seed) => `Clave final: ${seed.memory}`
   },
   {
     label: "Clave",
-    title: (seed) => seed.topic,
-    body: (seed) => seed.memory,
-    extra: () => "Si puedes explicarlo en una frase, ya tienes una pieza mental util."
+    title: (seed) => `La clave de ${lowerFirst(seed.topic)}`,
+    body: (seed) => longCard(
+      seed,
+      (item) => item.memory,
+      (item) => `La explicacion de fondo: ${lowerFirst(item.core)}`,
+      (item) => `Lo vuelve importante el hecho de que ${lowerFirst(item.why)}`,
+      (item) => `Para no simplificarlo mal: ${lowerFirst(item.trap)}`
+    ),
+    extra: (seed) => `Ejemplo rapido: ${seed.example}`
   }
 ];
 
@@ -264,8 +307,8 @@ function slugify(value) {
 const generatedFacts = [];
 
 Object.entries(THEME_SEEDS).forEach(([category, seeds]) => {
-  seeds.forEach((seed, seedIndex) => {
-    ANGLES.forEach((angle, angleIndex) => {
+  CARDS_PER_SEED.forEach((angle, angleIndex) => {
+    seeds.forEach((seed, seedIndex) => {
       generatedFacts.push({
         id: `${slugify(category)}-${ACTIVE_PACK_ID}-${seedIndex + 1}-${angleIndex + 1}`,
         category,
